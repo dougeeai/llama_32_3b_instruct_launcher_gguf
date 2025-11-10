@@ -1,0 +1,48 @@
+# environment.yml - Conda environment for Llama 3.2 3B GGUF Launcher
+# Usage: conda env create -f environment.yml
+# Install appropriate wheel from https://github.com/dougeeai/llama-cpp-python-wheels or build from source
+
+name: llama_32_3b_instruct_launcher_gguf
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python 3.13 (keep specific version for compatibility with wheel)
+  - python=3.13
+  
+  # Core dependencies
+  - pip
+  - setuptools
+  - wheel
+  
+  # System monitoring
+  - psutil
+  
+  # Build tools (needed for some pip packages)
+  - cmake
+  - ninja
+  
+  # Optional but useful for development
+  - ipykernel  # For VSCode Jupyter support with # %% cells
+  
+  # Pip dependencies
+  - pip:
+    # GPU monitoring
+    - nvidia-ml-py
+    - pynvml  # Alternative/backup GPU monitoring
+    
+    # For model downloads (if using HuggingFace hub)
+    - huggingface-hub
+    
+    # Utilities
+    - tqdm  # Progress bars
+    - rich  # Rich terminal output
+    
+    # JSON Schema support (for grammar/structured output)
+    - jsonschema
+    - pydantic
+    
+    # Performance monitoring
+    - py-cpuinfo  # Detailed CPU info
+    - gpustat  # GPU statistics
